@@ -1,0 +1,49 @@
+#include<stdio.h>
+int main()
+{
+	int a,i,j,k,b=1,sum,cnt=1,kong=-1,max;
+	char c;
+	scanf("%d %c",&a,&c);
+	sum=b;
+	while(sum<=a)
+	{	
+		cnt=sum;
+		b=b+2;
+		sum+=b*2;
+	}
+	max=b-2;
+	for(i=0;i<max/2;i++)
+	{	
+		b=b-2;
+		kong=(max-b)/2;
+		for(k=0;k<kong;k++)
+		printf(" ");
+		for(j=0;j<b;j++)
+		{
+			printf("%c",c);
+		}
+		printf("\n");
+	}
+	for(k=0;k<kong+1;k++)
+		printf(" ");
+	printf("%c",c);
+	if(a==1)
+	printf("\n");
+	b=max+2;
+	if(a>1)
+	{	
+		printf("\n");
+		for(i=0;i<b/2-1;i++)
+		{	
+			for(k=0;k<kong;k++)
+			printf(" ");
+			kong--;
+			for(j=0;j<(i+1)*2+1;j++)
+			{
+				printf("%c",c);
+			}
+		printf("\n");
+		}
+	}
+	printf("%d",a-cnt);
+}
