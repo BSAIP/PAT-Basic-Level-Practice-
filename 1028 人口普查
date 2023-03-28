@@ -1,0 +1,93 @@
+#include<stdio.h>
+struct Old{
+	char name[5];
+	int year;
+	int month;
+	int day;
+};
+int judge(struct Old A);
+int compare(struct Old A,struct Old B);
+int main()
+{
+	int N,max=0,min=0,cnt=0,i,flag1,flag2;
+	scanf("%d",&N);
+	struct Old peop[N];
+	for(i=0;i<N;i++)
+	{
+		scanf("%s %d/%d/%d",peop[i].name,&peop[i].year,&peop[i].month,&peop[i].day);
+	}
+	for(i=0;i<N;i++)
+	{
+		if(judge(peop[i]))
+		{
+			max=min=i;
+			break;
+		}
+	}
+	for(i=0;i<N;i++)
+	{
+		flag1=0;flag2=0;
+		if(judge(peop[i])==1)
+		{	
+			cnt++;
+			flag1=compare(peop[max],peop[i]);
+			if(flag1==2)
+			max=i;
+			flag2=compare(peop[min],peop[i]);
+			if(flag2==1)
+			min=i;
+		}
+	}
+	printf("%d",cnt);
+	if(cnt)
+	printf(" %s %s",peop[max].name,peop[min].name);
+ }
+ 
+ int judge(struct Old A)//返回1，说明该数据合法 
+ {
+	if(A.year<1814||A.year>2014)
+	return 0;
+	else if(A.year==1814)
+	{
+		if(A.month<9)
+		return 0;
+		else if(A.month==9)
+		{
+			if(A.day<6)
+			return 0;	
+		}	
+	}
+	else if(A.year==2014)
+	{
+		if(A.month>9)
+		return 0;
+		else if(A.month==9)
+		{
+			if(A.day>6)
+			return 0;
+		}
+	}
+	return 1;
+ }
+ 
+ int compare(struct Old A,struct Old B)//返回1，则A大                                  
+ {									  //返回2，则B大 
+ 	if(A.year>B.year)
+	 return 2;
+	else if(A.year<B.year)
+	 return 1;
+	else
+	{
+		if(A.month>B.month)
+		return 2;
+		else if(A.month<B.month)
+		return 1;
+		else
+		{
+			if(A.day>B.day)
+			return 2;
+			else
+			return 1;
+		}
+	 } 
+ }
