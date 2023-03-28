@@ -1,0 +1,30 @@
+#include<stdio.h>
+int main()
+{
+	int a,b=0,i,j;
+	char c;
+	scanf("%d %c",&a,&c);
+	if(a%2==1)
+	{b=a/2+1;}
+	else
+	{b=a/2;}
+	for(i=0;i<a;i++)
+	{
+		printf("%c",c);
+	}
+	printf("\n");
+	for(i=0;i<b-2;i++)
+	{
+		printf("%c",c);
+		for(j=0;j<a-2;j++)
+		{
+			printf(" ");
+		}
+		printf("%c\n",c);
+	}
+	for(i=0;i<a;i++)
+	{
+		printf("%c",c);
+	}
+	printf("\n");
+ } 
