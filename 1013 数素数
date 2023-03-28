@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+	int i,j,M,N,flag,cnt=0,cnt1=0;
+	scanf("%d %d",&M,&N);
+	for(i=2;cnt1<=N;i++)
+	{	
+		flag=1;
+		for(j=2;j<=sqrt(i);j++)
+		{
+			if(i%j==0)
+			{
+				flag=0;
+				break;
+			}
+		}
+		if(flag)
+		{
+			cnt1++;
+			if(cnt1>=M&&cnt1<=N)
+			{
+				cnt++;
+				if(cnt%10)
+				{
+					if((cnt1+1)>N)
+					printf("%d",i);
+					else
+					printf("%d ",i);
+				}
+				else
+				printf("%d\n",i);
+			}
+		}
+	}
+}
