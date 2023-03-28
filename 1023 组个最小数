@@ -1,0 +1,54 @@
+#include<stdio.h>
+void sort(int B[],int N);
+void swap(int* c,int* d)
+{
+	int* temp;
+	temp=*c,*c=*d,*d=temp;
+}
+int main()
+{
+	int i,j=0,cnt=0,a,B[50];
+	for(i=0;i<10;i++)
+	{
+		scanf("%d",&a);
+		for(j=cnt;j<cnt+a;j++)
+		{
+			B[j]=i;
+		}
+		cnt=j;
+	}
+	sort(B,cnt);
+	if(B[0]==0)
+	{
+		nonezero(B,cnt);
+	}
+	for(i=0;i<cnt;i++)
+	{
+		printf("%d",B[i]);
+	}
+ } 
+ void sort(int B[],int N)
+ {
+ 	int i=0,j=0,min;
+ 	for(i=0;i<N-1;i++)
+ 	{	min=i;
+ 		for(j=i+1;j<N;j++)
+ 		{
+ 			if(B[min]>B[j])
+ 			min=j;
+		 }
+		swap(&B[i],&B[min]);
+	 }
+ }
+ void nonezero(int B[],int N)
+ {
+ 	int i;
+ 	for(i=0;i<N;i++)
+ 	{
+ 		if(B[i]!=0)
+ 		{
+ 			swap(&B[i],&B[0]);
+ 			break;
+ 		}
+	 }
+ }
