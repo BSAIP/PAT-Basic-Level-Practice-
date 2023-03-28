@@ -1,0 +1,72 @@
+#include<stdio.h>
+#include<string.h>
+int index(char A[],int l);
+int main()
+{
+	char A[10000],B[10000];
+	int i,j=0,l,cnt=0;
+	scanf("%s",A);
+	l=strlen(A);
+	for(i=1;A[i]!='E';i++)
+	{	
+		if(A[i]!='.')
+		{
+			B[j]=A[i];
+			j++;
+		}
+	}
+	cnt=index(A,l-1);
+	if(A[0]=='-')
+	printf("-");
+	if(cnt>0)
+	{
+		if(j-1<=cnt)
+		{
+			for(i=0;i<j;i++)
+			{
+				printf("%c",B[i]);
+			}
+			for(i=0;i<cnt-j+1;i++)
+			{
+				printf("0");
+			}
+		}
+		else
+		{
+			for(i=0;i<cnt+1;i++)
+			{
+				printf("%c",B[i]);
+			}
+			printf(".");
+			for(i=cnt+1;i<j;i++)
+			{
+				printf("%c",B[i]);
+			}
+		}
+	}
+	else
+	{	
+		cnt*=-1;
+		printf("0.");
+		for(i=0;i<cnt-1;i++)
+		printf("0");
+		for(i=0;i<j;i++)
+		{
+			printf("%c",B[i]);
+		}
+	}
+}
+int index(char A[],int l)
+{
+	int i,j=1,ind=A[l]-'0';
+	i=l-1;
+	while(A[i]!='-'&&A[i]!='+')
+	{
+		ind=(A[i]-'0')*pow(10,j)+ind;
+		i--;
+		j++;
+	}
+	if(A[i]=='-')
+	ind*=-1;
+	return ind;
+}
