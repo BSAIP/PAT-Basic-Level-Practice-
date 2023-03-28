@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<string.h>
+struct STU{
+	char name[11];
+	char number[11];
+	int grade;
+};
+int main()
+{
+	int n,i,maxgrade=-1,mingrade=101,max=-1,min=-1;
+	scanf("%d",&n);
+	struct STU stu[n];
+	for(i=0;i<n;i++)
+	{
+		scanf("%s %s %d",stu[i].name,stu[i].number,&stu[i].grade);
+		if(stu[i].grade>maxgrade)
+		{maxgrade=stu[i].grade;
+		max=i;}
+		if(stu[i].grade<mingrade)
+		{mingrade=stu[i].grade;
+		min=i;}
+	}
+	printf("%s %s\n",stu[max].name,stu[max].number);
+	printf("%s %s",stu[min].name,stu[min].number);
+}
