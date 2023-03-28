@@ -1,0 +1,68 @@
+#include<stdio.h>
+#include<string.h>
+void swap(int* a,int* b)
+{	
+	int* temp;
+	temp=*a,*a=*b,*b=temp;
+}
+void compare(int B[]);
+int main()
+{
+	char A[4];
+	int i,l,B[4]={0,0,0,0},b1=0,b2=0,b3=0,b4=0;
+	scanf("%s",A);
+	l=strlen(A);
+	for(i=0;i<l;i++)
+	{
+		B[i]=A[i]-'0';
+	}
+	if(B[0]==B[1]&&B[1]==B[2]&&B[2]==B[3])
+	{
+		for(i=0;i<4;i++)
+		{
+			b1=b1*10+B[i];
+		}
+		printf("%d - %d = 0000",b1,b1);	
+	}
+	else
+	{
+		while(b3!=6174)
+		{	b1=0;
+			b2=0;
+			compare(B);
+			for(i=3;i>-1;i--)
+			{
+				b2=b2*10+B[i];
+			}
+			for(i=0;i<4;i++)
+			{
+				b1=b1*10+B[i];
+			}
+			b3=b2-b1;
+			printf("%04d - %04d = %04d",b2,b1,b3);
+			if(b3!=6174)
+			{	b4=b3;
+				printf("\n");
+				for(i=0;i<4;i++)
+				{
+					B[i]=b4%10;
+					b4/=10;
+				}
+			}
+		}
+	}	
+}
+void compare(int B[])
+{
+	int i=0,j=0,min;
+	for(i=0;i<3;i++)
+	{	
+		min=i;
+		for(j=i+1;j<4;j++)
+		{
+			if(B[min]>B[j])
+			min=j;
+		}
+		swap(&B[i],&B[min]);
+	}
+}
