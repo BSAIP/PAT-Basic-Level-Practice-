@@ -1,0 +1,33 @@
+#include<stdio.h>
+void Rightshift(int Array[],int N,int M);
+#define Swap(a,b) a^=b,b^=a,a^=b 
+int main()
+{
+	int N,M,j,i;
+	scanf("%d %d",&N,&M);
+	int Array[N];
+	if(M>N)
+	M%=N;
+	for(i=0;i<N;i++)
+	{
+		scanf("%d",&Array[i]);
+	}
+	Rightshift(Array,N,M);
+	printf("%d",Array[0]);
+	for(j=1;j<N;j++)
+	{
+		printf(" %d",Array[j]);
+	}
+ } 
+void Rightshift(int Array[],int N,int M)
+{   if(M>0)
+	{
+			int i,j;
+		for(i=0,j=N-1;i<j;i++,j--)
+		Swap(Array[i],Array[j]);
+		for(i=0,j=M-1;i<j;i++,j--)
+		Swap(Array[i],Array[j]);
+		for(i=M,j=N-1;i<j;i++,j--)
+		Swap(Array[i],Array[j]);
+	}
+}
