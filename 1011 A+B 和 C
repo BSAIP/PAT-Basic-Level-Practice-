@@ -1,0 +1,28 @@
+#include<stdio.h>
+int Compare(long long int a,long long int b,long long int c);
+int main()
+{
+	int T,i;
+	long long int a,b,c;
+	scanf("%d",&T);
+	int Array[T];
+	for(i=0;i<T;i++)
+	{
+		scanf("%ld %ld %ld",&a,&b,&c);
+		Array[i]=Compare(a,b,c);
+	}
+	for(i=0;i<T;i++)
+	{
+		if(Array[i])
+		printf("Case #%d: true\n",i+1);
+		else
+		printf("Case #%d: false\n",i+1);
+	}
+}
+int Compare(long long int a,long long int b,long long int c)
+{
+	if(a+b>c)
+	return 1;
+	else
+	return 0;
+}
