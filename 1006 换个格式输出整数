@@ -1,0 +1,25 @@
+#include<stdio.h>
+int main()
+{
+	int n,b,s,g,i=1;
+	b=s=g;
+	scanf("%d",&n);
+	b=n/100;
+	s=(n-b*100)/10;
+	g=n%10;
+	while(b>0)
+	{
+		printf("B");
+		b--;
+	}
+	while(s>0)
+	{
+		printf("S");
+		s--;
+	}
+	while(i<=g)
+	{
+		printf("%d",i);
+		i++;
+	}
+}
